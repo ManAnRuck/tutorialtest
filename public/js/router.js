@@ -1,39 +1,40 @@
 define(['views/index', 'views/register', 'views/login', 'views/forgotpassword'],
-    function(IndexView, RegisterView, LoginView, ForgotPasswordView) {
-        var SocialRouter = Backbone.Router.extend({
-            currentView: null,
+       function(IndexView, RegisterView, LoginView, ForgotPasswordView) {
+  var SocialRouter = Backbone.Router.extend({
+    currentView: null,
 
-            routes: {
-                "index": "index",
-                "login": "login",
-                "register": "register",
-                "forgotpassword": "forgotpassword"
-            },
+    routes: {
+      "index": "index",
+      "login": "login",
+      "register": "register",
+      "forgotpassword": "forgotpassword"
+    },
 
-            changeView: function(view) {
-                if(null != this.currentView) {
-                    this.currentView.undelegateEvents();
-                }
-                this.currentView = view;
-                this.currentView.render();
-            },
+    changeView: function(view) {
+      if ( null != this.currentView ) {
+        this.currentView.undelegateEvents();
+      }
+      this.currentView = view;
+      this.currentView.render();
+    },
 
-            index: function () {
-                this.changeView(new IndexView());
-            },
+    index: function() {
+      this.changeView(new IndexView());
+    },
 
-            login: function() {
-                this.changeView(new LoginView());
-            },
+    login: function() {
+      this.changeView(new LoginView());
+    },
 
-            forgotpassword: function() {
-                this.changeView(new ForgotPasswordView());
-            },
+    forgotpassword: function() {
+      this.changeView(new ForgotPasswordView());
+    },
 
-            register: function() {
-                this.changeView(new RegisterView());
-            }
-        });
+    register: function() {
+      this.changeView(new RegisterView());
+    }
+  });
 
-        return new SocialRouter();
-    });
+  return new SocialRouter();
+});
+
